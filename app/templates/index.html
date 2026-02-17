@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Teen Patti Pro Arena</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Teen Patti Pro Arena</h1>
+    <p>Real-time Multiplayer • 100+ Tables • Admin Control</p>
+  </header>
+
+  <main>
+    <section class="card" id="authSection">
+      <h2>Authentication</h2>
+      <div class="grid2">
+        <div>
+          <h3>Register</h3>
+          <input id="regUsername" placeholder="username" />
+          <input id="regDisplay" placeholder="display name" />
+          <input id="regCountry" placeholder="country" />
+          <input id="regPassword" type="password" placeholder="password" />
+          <button id="registerBtn">Register</button>
+        </div>
+        <div>
+          <h3>Login</h3>
+          <input id="loginUsername" placeholder="username" />
+          <input id="loginPassword" type="password" placeholder="password" />
+          <button id="loginBtn">Login</button>
+        </div>
+      </div>
+      <p id="authMsg"></p>
+    </section>
+
+    <section class="card" id="profileSection" style="display:none;">
+      <h2>Profile</h2>
+      <div id="profileData"></div>
+      <div class="grid3">
+        <input id="updDisplay" placeholder="new display name" />
+        <input id="updCountry" placeholder="new country" />
+        <input id="updAvatar" placeholder="avatar URL" />
+      </div>
+      <button id="updateProfileBtn">Update Profile</button>
+      <button id="refreshLobbyBtn">Refresh Lobby</button>
+      <p id="profileMsg"></p>
+    </section>
+
+    <section class="card" id="lobbySection" style="display:none;">
+      <h2>Lobby (120 Tables)</h2>
+      <div id="tableList"></div>
+    </section>
+
+    <section class="card" id="tableSection" style="display:none;">
+      <h2>Table Room</h2>
+      <p id="tableMeta"></p>
+      <div id="tablePlayers"></div>
+      <div class="actions">
+        <button id="seeBtn">See Cards</button>
+        <button id="callBtn">Call</button>
+        <button id="raiseBtn">Raise x2</button>
+        <button id="packBtn">Pack</button>
+      </div>
+      <pre id="tableLog"></pre>
+    </section>
+
+    <section class="card" id="adminSection" style="display:none;">
+      <h2>Admin Panel</h2>
+      <button id="refreshAdminBtn">Refresh Overview</button>
+      <div id="adminOverview"></div>
+      <div class="grid3">
+        <input id="botTableId" placeholder="table id" />
+        <input id="botCount" placeholder="bot count (1-5)" />
+        <button id="addBotsBtn">Add Bots</button>
+      </div>
+      <p id="adminMsg"></p>
+    </section>
+  </main>
+
+  <script src="/static/app.js" defer></script>
+</body>
+</html>
