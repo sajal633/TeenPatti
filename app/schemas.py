@@ -53,3 +53,15 @@ class TwentyNinePlayRequest(BaseModel):
 
 class TwentyNineAddBotsRequest(BaseModel):
     count: int = Field(ge=1, le=4)
+
+
+class LudoCreateTableRequest(BaseModel):
+    name: str = Field(min_length=2, max_length=64)
+
+
+class LudoMoveRequest(BaseModel):
+    token_id: int = Field(ge=0, le=3)
+
+
+class LudoAddBotsRequest(BaseModel):
+    count: int = Field(ge=1, le=4)

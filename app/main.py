@@ -7,7 +7,7 @@ from fastapi.staticfiles import StaticFiles
 
 from app.core.config import APP_NAME, APP_VERSION, STATIC_DIR, TEMPLATE_FILE
 from app.database import Base, SessionLocal, engine
-from app.routers import admin, auth, game, lobby, profile, twentynine
+from app.routers import admin, auth, game, lobby, ludo, profile, twentynine
 from app.services.bootstrap import seed_default_admin, seed_tables
 from app.services.runtime import manager
 
@@ -31,6 +31,7 @@ def create_app() -> FastAPI:
     app.include_router(game.ws_router)
     app.include_router(admin.router)
     app.include_router(twentynine.router)
+    app.include_router(ludo.router)
 
     @app.get("/")
     def index() -> FileResponse:

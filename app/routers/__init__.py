@@ -1,3 +1,3 @@
-from . import admin, auth, game, lobby, profile, twentynine
+from . import admin, auth, game, lobby, ludo, profile, twentynine
 
-__all__ = ["auth", "profile", "lobby", "game", "admin", "twentynine"]
+__all__ = ["auth", "profile", "lobby", "game", "admin", "twentynine", "ludo"]

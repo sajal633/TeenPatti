@@ -7,66 +7,168 @@
   <link rel="stylesheet" href="/static/styles.css" />
 </head>
 <body>
-  <header>
-    <h1>Teen Patti Pro Arena</h1>
-    <p>Real-time Multiplayer • 100+ Tables • Admin Control</p>
+  <div class="bg-overlay"></div>
+
+  <header class="site-header">
+    <div class="brand">
+      <div class="brand-badge">TP</div>
+      <div>
+        <h1>Teen Patti Pro Arena</h1>
+        <p>Card Adda • Teen Patti • 29 • Tournament Feel</p>
+      </div>
+    </div>
+    <nav class="top-controls">
+      <button id="openSignInBtn" class="ghost">Sign In</button>
+      <button id="openSignUpBtn">Join Now</button>
+      <button id="toggleFxBtn" class="ghost">FX: ON</button>
+      <button id="toggleMusicBtn" class="ghost">Music: OFF</button>
+    </nav>
   </header>
 
-  <main>
-    <section class="card" id="authSection">
-      <h2>Authentication</h2>
-      <div class="grid2">
-        <div>
-          <h3>Register</h3>
-          <input id="regUsername" placeholder="username" />
-          <input id="regDisplay" placeholder="display name" />
-          <input id="regCountry" placeholder="country" />
-          <input id="regPassword" type="password" placeholder="password" />
-          <button id="registerBtn">Register</button>
+  <section class="landing-shell">
+    <section class="hero card">
+      <div>
+        <p class="eyebrow">Premium Indian Card Platform</p>
+        <h2>Play Like A Pro Table. Feel Like A Real Cardroom.</h2>
+        <p class="hero-copy">
+          Ultra-responsive gameplay, immersive table scenes, avatar identity, smart lobby discovery,
+          and professional admin controls — all in one premium card gaming platform.
+        </p>
+        <div class="button-row hero-actions">
+          <button id="startNowBtn">Start Playing</button>
+          <button id="exploreBtn" class="ghost">Explore Platform</button>
         </div>
-        <div>
-          <h3>Login</h3>
-          <input id="loginUsername" placeholder="username" />
-          <input id="loginPassword" type="password" placeholder="password" />
-          <button id="loginBtn">Login</button>
+
+        <div class="stat-strip">
+          <div><b>120+</b><span>Teen Patti Tables</span></div>
+          <div><b>4</b><span>Seat 29 Mode</span></div>
+          <div><b>99.9%</b><span>Sync Uptime</span></div>
+          <div><b>24/7</b><span>Global Sessions</span></div>
         </div>
       </div>
+
+      <div class="hero-panel">
+        <h3>Platform Advantages</h3>
+        <ul>
+          <li>Live seat-based table visualization</li>
+          <li>Avatar + frame style profile system</li>
+          <li>Elite AI pressure bots</li>
+          <li>Responsive from mobile to TV</li>
+          <li>No ad overlays or noisy banners</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="featureGrid" class="feature-grid">
+      <article class="card feature-card"><h3>Game Hub</h3><p>Visual mode cards for quick game discovery.</p></article>
+      <article class="card feature-card"><h3>Immersive Table</h3><p>Seats, avatars, chips, cards and action controls.</p></article>
+      <article class="card feature-card"><h3>Profile Studio</h3><p>Avatar gallery, style frames and identity setup.</p></article>
+      <article class="card feature-card"><h3>Admin Control</h3><p>Realtime load, bot injection and room governance.</p></article>
+    </section>
+  </section>
+
+  <section id="authModal" class="modal hidden" aria-hidden="true">
+    <div class="modal-backdrop" id="closeModalBackdrop"></div>
+    <div class="modal-card card" role="dialog" aria-modal="true" aria-label="Authentication">
+      <div class="modal-header">
+        <h2 id="authTitle">Sign In</h2>
+        <button id="closeAuthModalBtn" class="ghost small">Close</button>
+      </div>
+
+      <div id="signInPane">
+        <input id="loginUsername" placeholder="username" />
+        <input id="loginPassword" type="password" placeholder="password" />
+        <button id="loginBtn">Login</button>
+      </div>
+
+      <div id="signUpPane" class="hidden-pane">
+        <input id="regUsername" placeholder="username" />
+        <input id="regDisplay" placeholder="display name" />
+        <input id="regCountry" placeholder="country" />
+        <input id="regPassword" type="password" placeholder="password" />
+        <button id="registerBtn">Register</button>
+      </div>
+
+      <div class="switch-auth">
+        <button id="switchToSignInBtn" class="ghost small">Switch to Sign In</button>
+        <button id="switchToSignUpBtn" class="ghost small">Switch to Sign Up</button>
+      </div>
       <p id="authMsg"></p>
+    </div>
+  </section>
+
+  <main id="appPortal" class="hidden-app">
+    <section class="card" id="lobbySection" style="display:none;">
+      <h2>Game Hub Lobby</h2>
+      <div class="game-mode-grid">
+        <article class="mode-card m-teen"><h3>Teen Patti</h3><p>High-speed showdown tables</p></article>
+        <article class="mode-card m-29"><h3>29</h3><p>4-player trick battles</p></article>
+      </div>
+      <h3 class="subheading">Live Tables</h3>
+      <div id="tableList"></div>
     </section>
 
     <section class="card" id="profileSection" style="display:none;">
-      <h2>Profile</h2>
-      <div id="profileData"></div>
+      <h2>Profile Studio</h2>
+      <div class="profile-wrap">
+        <div id="avatarFramePreview" class="frame-preview frame-style-0">
+          <img id="avatarPreview" class="avatar" alt="avatar" src="https://api.dicebear.com/9.x/thumbs/svg?seed=player" />
+        </div>
+        <div id="profileData"></div>
+      </div>
+
       <div class="grid3">
         <input id="updDisplay" placeholder="new display name" />
         <input id="updCountry" placeholder="new country" />
         <input id="updAvatar" placeholder="avatar URL" />
       </div>
-      <button id="updateProfileBtn">Update Profile</button>
-      <button id="refreshLobbyBtn">Refresh Lobby</button>
+
+      <h3 class="subheading">Avatar Gallery</h3>
+      <div class="avatar-presets" id="avatarPresetList"></div>
+
+      <h3 class="subheading">Frame Styles</h3>
+      <div id="framePresetList" class="frame-presets"></div>
+
+      <div class="button-row">
+        <button id="updateProfileBtn">Save Profile</button>
+        <button id="refreshLobbyBtn">Refresh Lobby</button>
+      </div>
       <p id="profileMsg"></p>
     </section>
 
-    <section class="card" id="lobbySection" style="display:none;">
-      <h2>Lobby (120 Tables)</h2>
-      <div id="tableList"></div>
-    </section>
-
-    <section class="card" id="tableSection" style="display:none;">
-      <h2>Table Room</h2>
+    <section class="card table-arena-card" id="tableSection" style="display:none;">
+      <h2>Teen Patti Table Arena</h2>
       <p id="tableMeta"></p>
-      <div id="tablePlayers"></div>
+
+      <div class="table-arena" id="tableArena">
+        <div class="table-felt">
+          <div class="pot-chip" id="potChip">Pot 0</div>
+          <div class="table-logo">TEEN PATTI</div>
+          <div id="tableSeats" class="table-seats"></div>
+        </div>
+      </div>
+
       <div class="actions">
-        <button id="seeBtn">See Cards</button>
+        <button id="seeBtn">See</button>
         <button id="callBtn">Call</button>
-        <button id="raiseBtn">Raise x2</button>
+        <button id="raiseBtn">Raise</button>
         <button id="packBtn">Pack</button>
       </div>
       <pre id="tableLog"></pre>
     </section>
 
+
+
+    <section class="card" id="ludoSection" style="display:none;">
+      <h2>Ludo Court Arena</h2>
+      <p class="subheading">Reference-style court with playable path blocks, 4 home yards, safe-star stoppages, and 3-cell middle lanes.</p>
+      <div class="ludo-wrap">
+        <div id="ludoBoard" class="ludo-board" aria-label="Ludo board"></div>
+      </div>
+    </section>
+
     <section class="card" id="adminSection" style="display:none;">
-      <h2>Admin Panel</h2>
+      <h2>Admin Control</h2>
       <button id="refreshAdminBtn">Refresh Overview</button>
       <div id="adminOverview"></div>
       <div class="grid3">
